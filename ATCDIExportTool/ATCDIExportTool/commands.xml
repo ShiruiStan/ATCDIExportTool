@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<KeyinTree xmlns="http://www.bentley.com/schemas/1.0/MicroStation/AddIn/KeyinTree.xsd">
+
+  <RootKeyinTable ID="ATCDI">
+    <Keyword SubtableRef="Commands" CommandWord="ATCDI">
+      <Options Required="true" />
+    </Keyword>
+  </RootKeyinTable>
+
+  <SubKeyinTables>
+    <KeyinTable ID="Commands">
+      <Keyword CommandWord="EXPORT">
+        <Options Required="false" />
+      </Keyword>
+    </KeyinTable>
+  </SubKeyinTables>
+
+  <KeyinHandlers>
+    <KeyinHandler Keyin="ATCDI EXPORT" Function="ATCDIExportTool.ScanBox.StartExportTool"/>
+  </KeyinHandlers>
+
+</KeyinTree>
+
