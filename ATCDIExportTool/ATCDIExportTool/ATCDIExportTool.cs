@@ -25,11 +25,11 @@ namespace ATCDIExportTool
         static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
             Exception ex = e.ExceptionObject as Exception;
-            MessageBox.Show(ex.Message);
+            MessageBox.Show(ex.Message + Environment.NewLine + ex.StackTrace);
         }
         static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
         {
-            MessageBox.Show(e.Exception.Message);
+            MessageBox.Show(e.Exception.Message + Environment.NewLine + e.Exception.StackTrace);
         }
 
     }

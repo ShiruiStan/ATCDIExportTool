@@ -111,9 +111,10 @@
     <Compile Include="ScanBox.Designer.cs">
       <DependentUpon>ScanBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="ScanTool.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="commands.xml" >
+    <EmbeddedResource Include="commands.xml">
       <SubType>Designer</SubType>
       <LogicalName>CommandTable.xml</LogicalName>
     </EmbeddedResource>

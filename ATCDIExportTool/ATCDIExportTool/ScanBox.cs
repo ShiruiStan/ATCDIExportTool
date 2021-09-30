@@ -26,7 +26,18 @@ namespace ATCDIExportTool
 
         private void ScanButton_Click(object sender, EventArgs e)
         {
-            throw new Exception("测试错误");
+            ScanTool tool = new ScanTool();
+            tool.StartScan();
+        }
+
+        private void ExportCenter_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ExportModel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
