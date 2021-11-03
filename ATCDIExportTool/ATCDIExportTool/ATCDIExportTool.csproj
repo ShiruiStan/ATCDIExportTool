@@ -112,6 +112,7 @@
       <DependentUpon>ScanBox.cs</DependentUpon>
     </Compile>
     <Compile Include="ScanTool.cs" />
+    <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="commands.xml">
