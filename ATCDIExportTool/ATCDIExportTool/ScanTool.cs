@@ -94,7 +94,7 @@ namespace ATCDIExportTool
 
     }
 
-    class ExportElement
+    public class ExportElement
     {
         public readonly Element element;
         public readonly DPoint3d center;
@@ -110,7 +110,7 @@ namespace ATCDIExportTool
 
     }
 
-    class ExportFile
+    public class ExportFile
     {
         public List<ExportElement> elements = new List<ExportElement>();
         public DPoint3d center;

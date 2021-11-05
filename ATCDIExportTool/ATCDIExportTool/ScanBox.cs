@@ -56,9 +56,23 @@ namespace ATCDIExportTool
             }
         }
 
-        private void ExportModel_Click(object sender, EventArgs e)
-        {
 
+        private void ExportGltf_Click(object sender, EventArgs e)
+        {
+            if (this.tool.export.elements.Count == 0)
+            {
+                MessageBox.Show("请重新执行扫描");
+            }
+            else
+            {
+                this.Close();
+                ExportGltfBox box = new ExportGltfBox(tool.export);
+            }
+        }
+
+        private void ExportTile_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("功能处于改善中");
         }
     }
 }

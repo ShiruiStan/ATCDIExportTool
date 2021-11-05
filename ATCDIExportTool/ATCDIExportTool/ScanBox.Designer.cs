@@ -31,7 +31,8 @@
             this.ScanButton = new System.Windows.Forms.Button();
             this.ScanText = new System.Windows.Forms.TextBox();
             this.ExportCenter = new System.Windows.Forms.Button();
-            this.ExportModel = new System.Windows.Forms.Button();
+            this.ExportGltf = new System.Windows.Forms.Button();
+            this.ExportTile = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ScanButton
@@ -57,21 +58,31 @@
             // 
             this.ExportCenter.Location = new System.Drawing.Point(22, 263);
             this.ExportCenter.Name = "ExportCenter";
-            this.ExportCenter.Size = new System.Drawing.Size(110, 47);
+            this.ExportCenter.Size = new System.Drawing.Size(68, 47);
             this.ExportCenter.TabIndex = 0;
-            this.ExportCenter.Text = "导出元素位置";
+            this.ExportCenter.Text = "导出元素中心位置";
             this.ExportCenter.UseVisualStyleBackColor = true;
             this.ExportCenter.Click += new System.EventHandler(this.ExportCenter_Click);
             // 
-            // ExportModel
+            // ExportGltf
             // 
-            this.ExportModel.Location = new System.Drawing.Point(168, 263);
-            this.ExportModel.Name = "ExportModel";
-            this.ExportModel.Size = new System.Drawing.Size(110, 47);
-            this.ExportModel.TabIndex = 0;
-            this.ExportModel.Text = "导出模型数据";
-            this.ExportModel.UseVisualStyleBackColor = true;
-            this.ExportModel.Click += new System.EventHandler(this.ExportModel_Click);
+            this.ExportGltf.Location = new System.Drawing.Point(208, 263);
+            this.ExportGltf.Name = "ExportGltf";
+            this.ExportGltf.Size = new System.Drawing.Size(70, 47);
+            this.ExportGltf.TabIndex = 0;
+            this.ExportGltf.Text = "导出  GLTF";
+            this.ExportGltf.UseVisualStyleBackColor = true;
+            this.ExportGltf.Click += new System.EventHandler(this.ExportGltf_Click);
+            // 
+            // ExportTile
+            // 
+            this.ExportTile.Location = new System.Drawing.Point(119, 263);
+            this.ExportTile.Name = "ExportTile";
+            this.ExportTile.Size = new System.Drawing.Size(70, 47);
+            this.ExportTile.TabIndex = 0;
+            this.ExportTile.Text = "导出3DTILES";
+            this.ExportTile.UseVisualStyleBackColor = true;
+            this.ExportTile.Click += new System.EventHandler(this.ExportTile_Click);
             // 
             // ScanBox
             // 
@@ -79,7 +90,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(301, 334);
             this.Controls.Add(this.ScanText);
-            this.Controls.Add(this.ExportModel);
+            this.Controls.Add(this.ExportTile);
+            this.Controls.Add(this.ExportGltf);
             this.Controls.Add(this.ExportCenter);
             this.Controls.Add(this.ScanButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -95,7 +107,8 @@
 
         private System.Windows.Forms.Button ScanButton;
         private System.Windows.Forms.TextBox ScanText;
-        private System.Windows.Forms.Button ExportModel;
+        private System.Windows.Forms.Button ExportGltf;
         private System.Windows.Forms.Button ExportCenter;
+        private System.Windows.Forms.Button ExportTile;
     }
 }

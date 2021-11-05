@@ -1,11 +1,12 @@
-﻿using System;
+﻿using System.Windows.Forms;
 using Bentley.GeometryNET;
 using Bentley.DgnPlatformNET.Elements;
 using Bentley.MstnPlatformNET;
+using Bentley.DgnPlatformNET;
 
 namespace ATCDIExportTool
 {
-    class Utils
+    public class Utils
     {
         public static DPoint3d GetElementCenter(Element el)
         {
@@ -38,6 +39,48 @@ namespace ATCDIExportTool
         {
 
             return null;
+        }
+    }
+
+    public class SelectPointTool : DgnPrimitiveTool
+    {
+        private ExportGltfBox form;
+
+        public SelectPointTool() : base(0, 0)
+        {
+            form = (ExportGltfBox)Form.ActiveForm;
+        }
+
+        public static void InstallNewTool()
+        {
+            SelectPointTool selector = new SelectPointTool();
+            selector.InstallTool();
+        }
+        protected override void OnPostInstall()
+        {
+            AccuSnap.LocateEnabled = true;
+            AccuSnap.SnapEnabled = true;
+            base.OnPostInstall();
+        }
+
+        protected override bool OnDataButton(DgnButtonEvent ev)
+        {
+            DPoint3d point = Utils.ConvertUorToMeter(ev.Point);
+            form.BaseX.Text = point.X.ToString();
+            form.BaseY.Text = point.Y.ToString();
+            form.BaseZ.Text = point.Z.ToString();
+            return true;
+        }
+
+        protected override bool OnResetButton(DgnButtonEvent ev)
+        {
+            ExitTool();
+            return false;
+        }
+
+        protected override void OnRestartTool()
+        {
+            InstallNewTool();
         }
     }
 }
