@@ -123,11 +123,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ATCDIExportTool.cs" />
-    <Compile Include="ExportGltfBox.cs">
+    <Compile Include="ExportBox.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ExportGltfBox.Designer.cs">
-      <DependentUpon>ExportGltfBox.cs</DependentUpon>
+    <Compile Include="ExportBox.Designer.cs">
+      <DependentUpon>ExportBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScanBox.cs">
@@ -146,8 +146,8 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ExportGltfBox.resx">
-      <DependentUpon>ExportGltfBox.cs</DependentUpon>
+    <EmbeddedResource Include="ExportBox.resx">
+      <DependentUpon>ExportBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ScanBox.resx">
       <DependentUpon>ScanBox.cs</DependentUpon>

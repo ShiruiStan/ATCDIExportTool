@@ -113,8 +113,6 @@ namespace ATCDIExportTool
     public class ExportFile
     {
         public List<ExportElement> elements = new List<ExportElement>();
-        public DPoint3d center;
-        public DRange3d range;
 
         public ExportFile()
         {
@@ -129,12 +127,6 @@ namespace ATCDIExportTool
         public void Reset()
         {
             elements.Clear();
-            center = DPoint3d.Zero;
-            range = DRange3d.NullRange;
-            Session.Instance.GetActiveDgnModel().GetRange(out range);
-            range.High = Utils.ConvertUorToMeter(range.High);
-            range.Low = Utils.ConvertUorToMeter(range.Low);
-            center = DPoint3d.FromXYZ((range.High.X + range.Low.X) / 2, (range.High.Y + range.Low.Y) / 2, (range.High.Z + range.Low.Z) / 2);
         }
     }
 }

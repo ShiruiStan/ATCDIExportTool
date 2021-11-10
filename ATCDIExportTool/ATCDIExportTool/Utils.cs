@@ -3,6 +3,7 @@ using Bentley.GeometryNET;
 using Bentley.DgnPlatformNET.Elements;
 using Bentley.MstnPlatformNET;
 using Bentley.DgnPlatformNET;
+using System.Collections.Generic;
 
 namespace ATCDIExportTool
 {
@@ -37,50 +38,76 @@ namespace ATCDIExportTool
 
         public static string GetElementGuid(Element element)
         {
-
             return null;
         }
+
+        public static void StepProgressBar()
+        {
+            ((ExportBox)Form.ActiveForm).ExportProgress.PerformStep();
+        }
     }
 
-    public class SelectPointTool : DgnPrimitiveTool
+    public class MeshTool : ElementGraphicsProcessor
     {
-        private ExportGltfBox form;
+        private readonly double chord;
+        private readonly double len;
+        private readonly double angle;
 
-        public SelectPointTool() : base(0, 0)
-        {
-            form = (ExportGltfBox)Form.ActiveForm;
+        public  PolyfaceHeader output;
+        private DTransform3d trans;
+
+
+        public MeshTool(double chord, double len, double angle) {
+            this.chord = chord;
+            this.len = len;
+            this.angle = angle;
+            output = new PolyfaceHeader();
+            trans = DTransform3d.Identity;
         }
 
-        public static void InstallNewTool()
+        public override FacetOptions GetFacetOptions()
         {
-            SelectPointTool selector = new SelectPointTool();
-            selector.InstallTool();
-        }
-        protected override void OnPostInstall()
-        {
-            AccuSnap.LocateEnabled = true;
-            AccuSnap.SnapEnabled = true;
-            base.OnPostInstall();
-        }
-
-        protected override bool OnDataButton(DgnButtonEvent ev)
-        {
-            DPoint3d point = Utils.ConvertUorToMeter(ev.Point);
-            form.BaseX.Text = point.X.ToString();
-            form.BaseY.Text = point.Y.ToString();
-            form.BaseZ.Text = point.Z.ToString();
-            return true;
+            double uor = Session.Instance.GetActiveDgnModel().GetModelInfo().UorPerMeter;
+            FacetOptions option = new FacetOptions
+            {
+                ChordTolerance = this.chord * uor,
+                MaxEdgeLength = this.len * uor,
+                AngleTolerance = this.angle,
+                MaxPerFace = 3,
+                EdgeHiding = false
+            };
+            return option;
         }
 
-        protected override bool OnResetButton(DgnButtonEvent ev)
+        public override bool ProcessAsBody(bool isCurved)
         {
-            ExitTool();
             return false;
         }
-
-        protected override void OnRestartTool()
+        public override bool ProcessAsFacets(bool isPolyface)
         {
-            InstallNewTool();
+            return true;
+        }
+        public override void AnnounceTransform(DTransform3d trans)
+        {
+            this.trans = trans;
+        }
+        public override BentleyStatus ProcessFacets(PolyfaceHeader data, bool filled)
+        {
+            output.CopyFrom(data);
+            output.Transform(ref trans, false);
+            return BentleyStatus.Success;
         }
     }
+
+
+    public class GltfTool
+    {
+        private readonly PolyfaceHeader mesh;
+        public GltfTool(PolyfaceHeader mesh)
+        {
+            this.mesh = mesh;
+        }
+
+    }
+
 }

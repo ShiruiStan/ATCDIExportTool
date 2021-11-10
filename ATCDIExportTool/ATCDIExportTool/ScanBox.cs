@@ -66,13 +66,8 @@ namespace ATCDIExportTool
             else
             {
                 this.Close();
-                ExportGltfBox box = new ExportGltfBox(tool.export);
+                ExportBox box = new ExportBox(tool.export);
             }
-        }
-
-        private void ExportTile_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("功能处于改善中");
         }
     }
 }
