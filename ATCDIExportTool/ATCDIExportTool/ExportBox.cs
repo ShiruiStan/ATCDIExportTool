@@ -15,29 +15,30 @@ namespace ATCDIExportTool
         {
             InitializeComponent();
             this.export = export;
-            this.TopMost = true;
-            this.ExportProgress.Value = 0;
-            this.ExportProgress.Step = 1;
-            this.ExportProgress.Maximum = export.elements.Count;
-            this.Show();
+            TopMost = true;
+            ExportProgress.Value = 0;
+            ExportProgress.Step = 1;
+            ExportProgress.Maximum = export.elements.Count;
+            Show();
 
         }
 
         private void ExportButton_Click(object sender, EventArgs e)
         {
-
-            this.Enabled = false;
-            this.meshTool = new MeshTool(Convert.ToDouble(this.ChordTexT.Text), Convert.ToDouble(this.MaxLengthText.Text), Convert.ToDouble(this.MaxAngleText.Text));
+            ExportProgress.Value = 0;
+            Enabled = false;
+            meshTool = new MeshTool(Convert.ToDouble(ChordTexT.Text), Convert.ToDouble(MaxLengthText.Text), Convert.ToDouble(MaxAngleText.Text));
             FolderBrowserDialog dialog = new FolderBrowserDialog() {
                 Description = "选择导出路径",
                 ShowNewFolderButton = true
             };
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                this.directory = dialog.SelectedPath + "\\";
+                directory = dialog.SelectedPath + "\\";
                 StartExport();
             }
-            this.Enabled = true;
+            Enabled = true;
+            MessageBox.Show("导出完成");
         }
 
 
@@ -51,9 +52,13 @@ namespace ATCDIExportTool
 
         private void StartExport()
         {
-            foreach ( ExportElement el in this.export.elements)
+            foreach (ExportElement el in export.elements)
             {
-                ElementGraphicsOutput.Process(el.element, this.meshTool);
+                ElementGraphicsOutput.Process(el.element, meshTool);
+                el.mesh = meshTool.output;
+                ExportProgress.PerformStep();
+                GltfTool gltf = new GltfTool(el, directory);
+                gltf.StartExport(false);
             }
         }
     }

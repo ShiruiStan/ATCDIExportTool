@@ -100,12 +100,14 @@ namespace ATCDIExportTool
         public readonly DPoint3d center;
         public readonly string guid;
         public readonly string elementId;
+        public PolyfaceHeader mesh;
         public ExportElement(Element el)
         {
             element = el;
             center = Utils.GetElementCenter(el);
             guid = Utils.GetElementGuid(el);
             elementId = el.ElementId.ToString();
+            mesh = PolyfaceHeader.New();
         }
 
     }
