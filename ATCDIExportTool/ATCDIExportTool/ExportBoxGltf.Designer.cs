@@ -1,6 +1,6 @@
 ﻿namespace ATCDIExportTool
 {
-    partial class ExportBox
+    partial class ExportBoxGltf
     {
         /// <summary>
         /// Required designer variable.
@@ -43,6 +43,7 @@
             this.AixsGroup = new System.Windows.Forms.GroupBox();
             this.Zup = new System.Windows.Forms.RadioButton();
             this.Yup = new System.Windows.Forms.RadioButton();
+            this.GltfEmbed = new System.Windows.Forms.RadioButton();
             this.FileGroup.SuspendLayout();
             this.MeshParas.SuspendLayout();
             this.AixsGroup.SuspendLayout();
@@ -60,6 +61,7 @@
             // 
             // FileGroup
             // 
+            this.FileGroup.Controls.Add(this.GltfEmbed);
             this.FileGroup.Controls.Add(this.Gltf);
             this.FileGroup.Controls.Add(this.Glb);
             this.FileGroup.Location = new System.Drawing.Point(12, 231);
@@ -72,7 +74,7 @@
             // Gltf
             // 
             this.Gltf.AutoSize = true;
-            this.Gltf.Location = new System.Drawing.Point(95, 30);
+            this.Gltf.Location = new System.Drawing.Point(53, 30);
             this.Gltf.Name = "Gltf";
             this.Gltf.Size = new System.Drawing.Size(47, 16);
             this.Gltf.TabIndex = 1;
@@ -84,7 +86,7 @@
             // 
             this.Glb.AutoSize = true;
             this.Glb.Checked = true;
-            this.Glb.Location = new System.Drawing.Point(24, 30);
+            this.Glb.Location = new System.Drawing.Point(6, 30);
             this.Glb.Name = "Glb";
             this.Glb.Size = new System.Drawing.Size(41, 16);
             this.Glb.TabIndex = 0;
@@ -131,7 +133,7 @@
             this.MaxLengthText.Name = "MaxLengthText";
             this.MaxLengthText.Size = new System.Drawing.Size(100, 21);
             this.MaxLengthText.TabIndex = 0;
-            this.MaxLengthText.Text = "0.5";
+            this.MaxLengthText.Text = "5";
             this.MaxLengthText.Leave += new System.EventHandler(this.Num_Validator);
             // 
             // label5
@@ -149,7 +151,7 @@
             this.ChordTexT.Name = "ChordTexT";
             this.ChordTexT.Size = new System.Drawing.Size(100, 21);
             this.ChordTexT.TabIndex = 0;
-            this.ChordTexT.Text = "0.1";
+            this.ChordTexT.Text = "1";
             this.ChordTexT.Leave += new System.EventHandler(this.Num_Validator);
             // 
             // ChordLabel
@@ -202,7 +204,18 @@
             this.Yup.Text = "Y轴向上";
             this.Yup.UseVisualStyleBackColor = true;
             // 
-            // ExportBox
+            // GltfEmbed
+            // 
+            this.GltfEmbed.AutoSize = true;
+            this.GltfEmbed.Location = new System.Drawing.Point(106, 30);
+            this.GltfEmbed.Name = "GltfEmbed";
+            this.GltfEmbed.Size = new System.Drawing.Size(83, 16);
+            this.GltfEmbed.TabIndex = 1;
+            this.GltfEmbed.TabStop = true;
+            this.GltfEmbed.Text = "gltf-embed";
+            this.GltfEmbed.UseVisualStyleBackColor = true;
+            // 
+            // ExportBoxGltf
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -214,7 +227,7 @@
             this.Controls.Add(this.ExportButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
-            this.Name = "ExportBox";
+            this.Name = "ExportBoxGltf";
             this.Text = "导出设置";
             this.FileGroup.ResumeLayout(false);
             this.FileGroup.PerformLayout();
@@ -242,5 +255,6 @@
         private System.Windows.Forms.RadioButton Zup;
         private System.Windows.Forms.RadioButton Yup;
         public System.Windows.Forms.ProgressBar ExportProgress;
+        private System.Windows.Forms.RadioButton GltfEmbed;
     }
 }

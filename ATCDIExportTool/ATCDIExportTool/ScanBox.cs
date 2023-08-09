@@ -48,7 +48,7 @@ namespace ATCDIExportTool
                     foreach (ExportElement el in this.tool.export.elements)
                     {
                         sheet.LastRowUsed().RowBelow().Cell(1).InsertData(
-                            new List<object>(){ el.guid, el.elementId, el.center.X, el.center.Y, el.center.Z}, true);
+                            new List<object>(){ el.props.ATCDI_guid, el.elementId, el.center.X, el.center.Y, el.center.Z}, true);
                     }
                     xls.SaveAs(dialog.FileName);
                     MessageBox.Show("导出完成");
@@ -59,14 +59,28 @@ namespace ATCDIExportTool
 
         private void ExportGltf_Click(object sender, EventArgs e)
         {
+            if ( tool.export.elements.Count == 0)
+            {
+                MessageBox.Show("请重新执行扫描");
+            }
+            else
+            {
+                Close();
+                new ExportBoxGltf(tool.export);
+            }
+        }
+
+        private void Export3DTiles_Click(object sender, EventArgs e)
+        {
             if (this.tool.export.elements.Count == 0)
             {
                 MessageBox.Show("请重新执行扫描");
             }
             else
             {
-                this.Close();
-                ExportBox box = new ExportBox(tool.export);
+                MessageBox.Show("功能开发中");
+                // ExportBoxGltf box = new ExportBoxGltf(tool.export);
+                // this.Close();
             }
         }
     }

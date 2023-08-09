@@ -32,6 +32,7 @@
             this.ScanText = new System.Windows.Forms.TextBox();
             this.ExportCenter = new System.Windows.Forms.Button();
             this.ExportGltf = new System.Windows.Forms.Button();
+            this.Export3DTiles = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ScanButton
@@ -57,7 +58,7 @@
             // 
             this.ExportCenter.Location = new System.Drawing.Point(22, 263);
             this.ExportCenter.Name = "ExportCenter";
-            this.ExportCenter.Size = new System.Drawing.Size(107, 47);
+            this.ExportCenter.Size = new System.Drawing.Size(70, 47);
             this.ExportCenter.TabIndex = 0;
             this.ExportCenter.Text = "导出元素中心";
             this.ExportCenter.UseVisualStyleBackColor = true;
@@ -65,13 +66,23 @@
             // 
             // ExportGltf
             // 
-            this.ExportGltf.Location = new System.Drawing.Point(170, 263);
+            this.ExportGltf.Location = new System.Drawing.Point(109, 263);
             this.ExportGltf.Name = "ExportGltf";
-            this.ExportGltf.Size = new System.Drawing.Size(108, 47);
+            this.ExportGltf.Size = new System.Drawing.Size(70, 47);
             this.ExportGltf.TabIndex = 0;
             this.ExportGltf.Text = "导出  GLTF";
             this.ExportGltf.UseVisualStyleBackColor = true;
             this.ExportGltf.Click += new System.EventHandler(this.ExportGltf_Click);
+            // 
+            // Export3DTiles
+            // 
+            this.Export3DTiles.Location = new System.Drawing.Point(198, 263);
+            this.Export3DTiles.Name = "Export3DTiles";
+            this.Export3DTiles.Size = new System.Drawing.Size(70, 47);
+            this.Export3DTiles.TabIndex = 0;
+            this.Export3DTiles.Text = "导出  3DTiles";
+            this.Export3DTiles.UseVisualStyleBackColor = true;
+            this.Export3DTiles.Click += new System.EventHandler(this.ExportGltf_Click);
             // 
             // ScanBox
             // 
@@ -79,6 +90,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(301, 334);
             this.Controls.Add(this.ScanText);
+            this.Controls.Add(this.Export3DTiles);
             this.Controls.Add(this.ExportGltf);
             this.Controls.Add(this.ExportCenter);
             this.Controls.Add(this.ScanButton);
@@ -97,5 +109,6 @@
         private System.Windows.Forms.TextBox ScanText;
         private System.Windows.Forms.Button ExportGltf;
         private System.Windows.Forms.Button ExportCenter;
+        private System.Windows.Forms.Button Export3DTiles;
     }
 }
